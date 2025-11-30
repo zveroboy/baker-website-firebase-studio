@@ -11,7 +11,7 @@ import {
   ChevronDown,
   LogOut,
   GalleryHorizontal,
-  MessageSquareQuestion,
+  MessageSquareQuote,
   Tag
 } from 'lucide-react';
 import { Logo } from '@/components/Logo';
@@ -29,7 +29,7 @@ const navItems = [
     { href: '/admin/products', label: 'Продукты', icon: Package },
     { href: '/admin/categories', label: 'Категории', icon: Tag },
     { href: '/admin/gallery', label: 'Галерея', icon: GalleryHorizontal },
-    { href: '/admin/faq', label: 'FAQ', icon: MessageSquareQuestion },
+    { href: '/admin/faq', label: 'FAQ', icon: MessageSquareQuote },
 ]
 
 export function AdminSidebar() {
