@@ -2,7 +2,7 @@
 "use client";
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { Menu, LogOut } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetClose } from '@/components/ui/sheet';
@@ -13,12 +13,13 @@ import { useToast } from '@/hooks/use-toast';
 
 export function AdminHeader() {
   const pathname = usePathname();
+  const router = useRouter();
   const { toast } = useToast();
 
   const handleLogout = async () => {
-      // In a real app, this would call a signout function
-      toast({ title: "Вы вышли из системы." });
-      // In a real app, you would redirect to the login page
+      // This is a placeholder
+      toast({ title: "Вы вышли из системы (симуляция)." });
+      router.push('/admin/login');
   };
   
   const MobileNav = () => (

@@ -15,9 +15,11 @@ import { Logo } from "@/components/Logo";
 import Link from "next/link";
 import { useToast } from "@/hooks/use-toast";
 import { Loader2 } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
   const { toast } = useToast();
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -25,21 +27,20 @@ export default function LoginPage() {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    // This is a mock login.
-    // In a real app, you would make an API call to your auth endpoint.
+    // This is a placeholder for actual login logic.
     setTimeout(() => {
-      if (email === "admin@example.com" && password === "password") {
-        toast({ title: "Вход выполнен успешно!" });
-        // In a real app, you'd redirect to the dashboard, e.g., router.push('/admin')
-        console.log("Logged in!");
-      } else {
-        toast({
-          title: "Ошибка входа",
-          description: "Проверьте правильность введенных данных.",
-          variant: "destructive",
-        });
-      }
-      setIsLoading(false);
+        setIsLoading(false);
+        // Simulate a successful login for now
+        if (email && password) {
+            toast({ title: "Вход выполнен (симуляция)" });
+            router.push('/admin/orders');
+        } else {
+            toast({
+                title: "Ошибка входа",
+                description: "Пожалуйста, введите email и пароль.",
+                variant: "destructive",
+            });
+        }
     }, 1000);
   };
 
@@ -67,6 +68,7 @@ export default function LoginPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 autoComplete="email"
+                disabled={isLoading}
               />
             </div>
             <div className="grid gap-2">
@@ -80,6 +82,7 @@ export default function LoginPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 autoComplete="current-password"
+                disabled={isLoading}
               />
             </div>
             <Button type="submit" className="w-full" disabled={isLoading}>
