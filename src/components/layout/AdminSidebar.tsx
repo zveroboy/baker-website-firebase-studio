@@ -15,7 +15,7 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
   
 
-const navItems = [
+export const navItems = [
     { href: '/admin/orders', label: 'Заказы', icon: ShoppingCart },
     { href: '/admin/products', label: 'Продукты', icon: Package },
     { href: '/admin/categories', label: 'Категории', icon: Tag },
