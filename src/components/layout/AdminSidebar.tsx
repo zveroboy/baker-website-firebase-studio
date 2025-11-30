@@ -1,7 +1,7 @@
 "use client";
 
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import {
   ShoppingCart,
   Package,
@@ -25,13 +25,12 @@ export const navItems = [
 
 export function AdminSidebar() {
     const pathname = usePathname();
-    const router = useRouter();
     const { toast } = useToast();
 
-    const handleLogout = async () => {
-        // This is a placeholder
-        toast({ title: "Вы вышли из системы (симуляция)." });
-        router.push('/admin/login');
+    const handleLogout = () => {
+        toast({ title: "Вы вышли из системы (демо)." });
+        // In a real app, this would sign the user out.
+        // e.g. router.push('/admin/login');
     };
 
     return (
