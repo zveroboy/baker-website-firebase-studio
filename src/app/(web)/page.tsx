@@ -15,7 +15,7 @@ export default function HomePage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative h-[60vh] md:h-[80vh] w-full flex items-center justify-center text-center text-white">
+      <section className="relative h-[60vh] md:h-[80vh] w-full flex items-center justify-center text-center text-white -mx-4 sm:-mx-6 lg:-mx-8">
         {heroImage && (
           <Image
             src={heroImage.imageUrl}
@@ -42,18 +42,16 @@ export default function HomePage() {
 
       {/* Featured Products Section */}
       <section className="py-16 lg:py-24 bg-background">
-        <div className="container">
-          <h2 className="text-3xl md:text-4xl font-headline text-center mb-12">Популярные десерты</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
-            {featuredProducts.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
+        <h2 className="text-3xl md:text-4xl font-headline text-center mb-12">Популярные десерты</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
+          {featuredProducts.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
         </div>
       </section>
 
       {/* About Section */}
-      <section className="py-16 lg:py-24 bg-secondary">
+      <section className="py-16 lg:py-24 bg-secondary -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8">
         <div className="container">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="order-2 md:order-1">
@@ -86,49 +84,47 @@ export default function HomePage() {
 
       {/* Info Section */}
       <section className="py-16 lg:py-24 bg-background">
-        <div className="container">
-          <h2 className="text-3xl md:text-4xl font-headline text-center mb-12">Информация для заказа</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex flex-col items-center gap-2">
-                  <Clock className="w-8 h-8 text-primary" />
-                  <span className="font-headline mt-2">Часы работы</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="text-muted-foreground">
-                <p>Прием заказов: 10:00 - 20:00</p>
-                <p>Доставка и самовывоз: 11:00 - 21:00</p>
-                <p>Ежедневно</p>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex flex-col items-center gap-2">
-                  <MapPin className="w-8 h-8 text-primary" />
-                   <span className="font-headline mt-2">Доставка и самовывоз</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="text-muted-foreground">
-                <p>Самовывоз по адресу:</p>
-                <p>г. Москва, ул. Кондитерская, 1</p>
-                <p className="mt-2">Доставка по Москве и МО</p>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex flex-col items-center gap-2">
-                  <Phone className="w-8 h-8 text-primary" />
-                   <span className="font-headline mt-2">Свяжитесь со мной</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="text-muted-foreground">
-                <p>Телефон: +7 (926) 123-45-67</p>
-                <p>Email: order@sweetdreams.com</p>
-                <p className="mt-2">С удовольствием отвечу на ваши вопросы</p>
-              </CardContent>
-            </Card>
-          </div>
+        <h2 className="text-3xl md:text-4xl font-headline text-center mb-12">Информация для заказа</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex flex-col items-center gap-2">
+                <Clock className="w-8 h-8 text-primary" />
+                <span className="font-headline mt-2">Часы работы</span>
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="text-muted-foreground">
+              <p>Прием заказов: 10:00 - 20:00</p>
+              <p>Доставка и самовывоз: 11:00 - 21:00</p>
+              <p>Ежедневно</p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex flex-col items-center gap-2">
+                <MapPin className="w-8 h-8 text-primary" />
+                 <span className="font-headline mt-2">Доставка и самовывоз</span>
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="text-muted-foreground">
+              <p>Самовывоз по адресу:</p>
+              <p>г. Москва, ул. Кондитерская, 1</p>
+              <p className="mt-2">Доставка по Москве и МО</p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex flex-col items-center gap-2">
+                <Phone className="w-8 h-8 text-primary" />
+                 <span className="font-headline mt-2">Свяжитесь со мной</span>
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="text-muted-foreground">
+              <p>Телефон: +7 (926) 123-45-67</p>
+              <p>Email: order@sweetdreams.com</p>
+              <p className="mt-2">С удовольствием отвечу на ваши вопросы</p>
+            </CardContent>
+          </Card>
         </div>
       </section>
     </>
