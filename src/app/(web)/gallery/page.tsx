@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import { Img } from 'next/img';
 import { galleryImages } from '@/lib/data';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 
@@ -16,7 +16,7 @@ export default function GalleryPage() {
           const placeholder = PlaceHolderImages.find(p => p.id === image.imageId);
           return placeholder ? (
             <div key={image.id} className="break-inside-avoid">
-              <Image
+              <Img
                 src={placeholder.imageUrl}
                 alt={image.alt}
                 width={500}

@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import { Img } from 'next/img';
 import Link from 'next/link';
 import type { Product } from '@/lib/types';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
@@ -19,7 +19,7 @@ export function ProductCard({ product }: ProductCardProps) {
         <Link href={`/products/${product.id}`} className="block">
           {placeholderImage && (
             <div className="aspect-square relative w-full">
-              <Image
+              <Img
                 src={placeholderImage.imageUrl}
                 alt={product.name}
                 fill

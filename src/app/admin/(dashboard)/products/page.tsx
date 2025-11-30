@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import { Img } from 'next/img';
 import {
   Table,
   TableBody,
@@ -70,7 +70,7 @@ export default function ProductsPage() {
                     <TableRow key={product.id}>
                         <TableCell className="hidden sm:table-cell">
                         {image && 
-                            <Image
+                            <Img
                                 alt={product.name}
                                 className="aspect-square rounded-md object-cover"
                                 height="64"
