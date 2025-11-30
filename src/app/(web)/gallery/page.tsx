@@ -6,9 +6,9 @@ export default function GalleryPage() {
   return (
     <div className="container py-12 lg:py-16">
       <div className="text-center mb-12">
-        <h1 className="text-4xl md:text-5xl font-headline">Галерея наших работ</h1>
+        <h1 className="text-4xl md:text-5xl font-headline">Галерея моих работ</h1>
         <p className="text-lg text-muted-foreground mt-2">
-          Вдохновитесь нашими прошлыми творениями
+          Вдохновитесь моими прошлыми творениями
         </p>
       </div>
       <div className="columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">

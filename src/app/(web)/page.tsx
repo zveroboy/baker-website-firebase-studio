@@ -57,9 +57,9 @@ export default function HomePage() {
         <div className="container">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="order-2 md:order-1">
-              <h2 className="text-3xl md:text-4xl font-headline mb-4">Наша философия</h2>
+              <h2 className="text-3xl md:text-4xl font-headline mb-4">Моя философия</h2>
               <p className="mb-4 text-muted-foreground">
-                "Сладкие Мечты" — это не просто кондитерская, это место, где рождаются маленькие чудеса. Я верю, что десерт — это кульминация любого праздника, и он должен быть не только вкусным, но и незабываемо красивым.
+                "Сладкие Мечты" — это не просто кондитерская, это место, где я создаю маленькие чудеса. Я верю, что десерт — это кульминация любого праздника, и он должен быть не только вкусным, но и незабываемо красивым.
               </p>
               <p className="mb-6 text-muted-foreground">
                 В своей работе я использую только натуральные ингредиенты высшего качества: бельгийский шоколад, свежие ягоды, натуральные сливки и настоящее сливочное масло. Каждый торт создается вручную с особым вниманием к деталям и вашим пожеланиям.
@@ -99,7 +99,7 @@ export default function HomePage() {
               <CardContent className="text-muted-foreground">
                 <p>Прием заказов: 10:00 - 20:00</p>
                 <p>Доставка и самовывоз: 11:00 - 21:00</p>
-                <p>Работаем ежедневно</p>
+                <p>Ежедневно</p>
               </CardContent>
             </Card>
             <Card>
@@ -119,13 +119,13 @@ export default function HomePage() {
               <CardHeader>
                 <CardTitle className="flex flex-col items-center gap-2">
                   <Phone className="w-8 h-8 text-primary" />
-                   <span className="font-headline mt-2">Свяжитесь с нами</span>
+                   <span className="font-headline mt-2">Свяжитесь со мной</span>
                 </CardTitle>
               </CardHeader>
               <CardContent className="text-muted-foreground">
                 <p>Телефон: +7 (926) 123-45-67</p>
                 <p>Email: order@sweetdreams.com</p>
-                <p className="mt-2">С удовольствием ответим на ваши вопросы</p>
+                <p className="mt-2">С удовольствием отвечу на ваши вопросы</p>
               </CardContent>
             </Card>
           </div>

@@ -13,7 +13,7 @@ export default function FaqPage() {
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-headline">Часто задаваемые вопросы</h1>
           <p className="text-lg text-muted-foreground mt-2">
-            Здесь вы найдете ответы на популярные вопросы о заказах, доставке и нашей продукции.
+            Здесь вы найдете ответы на популярные вопросы о заказах, доставке и моей продукции.
           </p>
         </div>
         <Accordion type="single" collapsible className="w-full">

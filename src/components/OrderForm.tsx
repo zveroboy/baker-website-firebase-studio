@@ -52,7 +52,7 @@ export function OrderForm({ product }: { product: Product }) {
     // Simulate API call
     setTimeout(() => {
       setIsLoading(false);
-      toast({ title: 'Заказ принят!', description: `Спасибо, ${name}! Мы скоро свяжемся с вами для подтверждения.` });
+      toast({ title: 'Заказ принят!', description: `Спасибо, ${name}! Я скоро свяжусь с вами для подтверждения.` });
       // Reset form could be added here
     }, 1500);
   };
