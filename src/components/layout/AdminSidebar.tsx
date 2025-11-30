@@ -28,8 +28,8 @@ export function AdminSidebar() {
 
     return (
         <div className="hidden border-r bg-sidebar md:block">
-            <div className="flex h-screen flex-col">
-                <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6 shrink-0">
+            <div className="flex h-full max-h-screen flex-col">
+                <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
                     <Logo className="text-sidebar-foreground" />
                 </div>
                 <div className="flex-1 overflow-y-auto">
@@ -49,7 +49,7 @@ export function AdminSidebar() {
                         ))}
                     </nav>
                 </div>
-                <div className="mt-auto p-4 border-t border-sidebar-border shrink-0">
+                <div className="mt-auto p-4 border-t border-sidebar-border">
                     <Button size="sm" variant="ghost" className="w-full justify-start text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground" asChild>
                        <Link href="/">
                          <LogOut className="mr-2 h-4 w-4" />
