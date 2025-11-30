@@ -13,8 +13,10 @@ import {
 import { Logo } from '@/components/Logo';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { auth } from '@/lib/firebase';
+import { signOut } from 'firebase/auth';
+import { useToast } from '@/hooks/use-toast';
   
-
 export const navItems = [
     { href: '/admin/orders', label: 'Заказы', icon: ShoppingCart },
     { href: '/admin/products', label: 'Продукты', icon: Package },
@@ -25,6 +27,16 @@ export const navItems = [
 
 export function AdminSidebar() {
     const pathname = usePathname();
+    const { toast } = useToast();
+
+    const handleLogout = async () => {
+        try {
+            await signOut(auth);
+            toast({ title: "Вы вышли из системы." });
+        } catch (error) {
+            toast({ title: "Ошибка", description: "Не удалось выйти из системы.", variant: "destructive" });
+        }
+    };
 
     return (
         <div className="hidden border-r bg-sidebar md:block">
@@ -32,7 +44,7 @@ export function AdminSidebar() {
                 <div className="flex h-14 shrink-0 items-center border-b px-4 lg:h-[60px] lg:px-6">
                     <Logo className="text-sidebar-foreground" />
                 </div>
-                <div className="flex flex-col overflow-auto py-2">
+                <div className="flex flex-1 flex-col overflow-auto py-2">
                     <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
                         {navItems.map((item) => (
                              <Link
@@ -48,15 +60,12 @@ export function AdminSidebar() {
                             </Link>
                         ))}
                     </nav>
-                    <hr className="border-t border-sidebar-border my-2" />
-                    <div className="px-2 lg:px-4 shrink-0">
-                        <Button size="sm" variant="ghost" className="w-full justify-start text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground" asChild>
-                            <Link href="/">
-                                <LogOut className="h-4 w-4" />
-                                Выйти
-                            </Link>
-                        </Button>
-                    </div>
+                </div>
+                <div className="mt-auto p-4 border-t border-sidebar-border">
+                    <Button onClick={handleLogout} size="sm" variant="ghost" className="w-full justify-start text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground">
+                        <LogOut className="h-4 w-4 mr-2" />
+                        Выйти
+                    </Button>
                 </div>
             </div>
         </div>

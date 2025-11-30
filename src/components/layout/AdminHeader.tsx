@@ -9,14 +9,26 @@ import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetClose } from '@/com
 import { Logo } from '@/components/Logo';
 import { navItems } from './AdminSidebar';
 import { cn } from '@/lib/utils';
-
+import { auth } from '@/lib/firebase';
+import { signOut } from 'firebase/auth';
+import { useToast } from '@/hooks/use-toast';
 
 export function AdminHeader() {
   const pathname = usePathname();
+  const { toast } = useToast();
+
+  const handleLogout = async () => {
+      try {
+          await signOut(auth);
+          toast({ title: "Вы вышли из системы." });
+      } catch (error) {
+          toast({ title: "Ошибка", description: "Не удалось выйти из системы.", variant: "destructive" });
+      }
+  };
   
   const MobileNav = () => (
-     <nav className="grid gap-2 text-lg font-medium">
-        <div className="flex h-16 items-center border-b px-4">
+     <nav className="flex flex-col h-full">
+        <div className="flex h-16 items-center border-b px-4 shrink-0">
             <Logo />
         </div>
         <div className="flex-1 overflow-auto py-2">
@@ -37,13 +49,11 @@ export function AdminHeader() {
             ))}
             </div>
         </div>
-        <div className="mt-auto p-4 border-t">
+        <div className="mt-auto p-4 border-t shrink-0">
             <SheetClose asChild>
-                <Button size="sm" variant="ghost" className="w-full justify-start" asChild>
-                    <Link href="/">
-                        <LogOut className="mr-2 h-4 w-4" />
-                        Выйти
-                    </Link>
+                <Button onClick={handleLogout} size="sm" variant="ghost" className="w-full justify-start">
+                    <LogOut className="mr-2 h-4 w-4" />
+                    Выйти
                 </Button>
             </SheetClose>
         </div>
