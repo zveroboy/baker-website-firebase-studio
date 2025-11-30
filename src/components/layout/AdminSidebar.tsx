@@ -1,7 +1,7 @@
 "use client";
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import {
   ShoppingCart,
   Package,
@@ -14,6 +14,7 @@ import { Logo } from '@/components/Logo';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { useToast } from '@/hooks/use-toast';
+import { useBetterAuth } from 'better-auth';
   
 export const navItems = [
     { href: '/admin/orders', label: 'Заказы', icon: ShoppingCart },
@@ -25,12 +26,18 @@ export const navItems = [
 
 export function AdminSidebar() {
     const pathname = usePathname();
+    const router = useRouter();
     const { toast } = useToast();
+    const { logout } = useBetterAuth();
 
-    const handleLogout = () => {
-        toast({ title: "Вы вышли из системы (демо)." });
-        // In a real app, this would sign the user out.
-        // e.g. router.push('/admin/login');
+    const handleLogout = async () => {
+        try {
+            await logout();
+            toast({ title: "Вы вышли из системы." });
+            router.push('/admin/login');
+        } catch (error) {
+            toast({ title: "Не удалось выйти из системы.", variant: "destructive" });
+        }
     };
 
     return (

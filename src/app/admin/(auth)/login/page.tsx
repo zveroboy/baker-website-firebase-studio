@@ -15,31 +15,34 @@ import { Logo } from "@/components/Logo";
 import Link from "next/link";
 import { useToast } from "@/hooks/use-toast";
 import { Loader2 } from "lucide-react";
+import { useBetterAuth } from "better-auth";
+import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
   const { toast } = useToast();
+  const router = useRouter();
+  const { login } = useBetterAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    // This is a placeholder login.
-    setTimeout(() => {
+    try {
+      await login({ email, password });
+      toast({ title: "Вход выполнен успешно" });
+      router.push("/admin/orders");
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : "Произошла неизвестная ошибка";
+      toast({
+        title: "Ошибка входа",
+        description: errorMessage,
+        variant: "destructive",
+      });
+    } finally {
       setIsLoading(false);
-      if (email === "admin@example.com" && password === "password") {
-        toast({ title: "Вход выполнен (демо)" });
-        // In a real app, you'd redirect to the dashboard.
-        // e.g., router.push('/admin/orders');
-      } else {
-        toast({
-          title: "Ошибка входа",
-          description: "Неверный email или пароль.",
-          variant: "destructive",
-        });
-      }
-    }, 1000);
+    }
   };
 
   return (
