@@ -1,4 +1,4 @@
-import { Image } from 'next/image';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { products, categories } from '@/lib/data';
 import { PlaceHolderImages } from '@/lib/placeholder-images';

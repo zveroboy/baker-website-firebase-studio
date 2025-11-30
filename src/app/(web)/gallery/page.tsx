@@ -1,4 +1,4 @@
-import { Image } from 'next/image';
+import Image from 'next/image';
 import { galleryImages } from '@/lib/data';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 
