@@ -28,12 +28,12 @@ export function AdminSidebar() {
 
     return (
         <div className="hidden border-r bg-sidebar md:block">
-            <div className="flex h-full max-h-screen flex-col">
-                <div className="flex h-16 items-center border-b px-6 shrink-0">
+            <div className="flex h-full max-h-screen flex-col gap-2">
+                <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6 shrink-0">
                     <Logo className="text-sidebar-foreground" />
                 </div>
-                <div className="flex-1 overflow-auto py-2">
-                    <nav className="grid items-start px-4 text-sm font-medium">
+                <div className="flex-1 overflow-auto">
+                    <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
                         {navItems.map((item) => (
                              <Link
                                 key={item.href}
