@@ -1,4 +1,4 @@
-import { Img } from 'next/img';
+import { Image } from 'next/image';
 import {
   Table,
   TableBody,
@@ -60,7 +60,7 @@ export default function GalleryAdminPage() {
                 return placeholder ? (
                     <TableRow key={image.id}>
                         <TableCell>
-                            <Img
+                            <Image
                                 alt={image.alt}
                                 className="aspect-square rounded-md object-cover"
                                 height="64"

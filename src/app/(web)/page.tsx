@@ -1,4 +1,4 @@
-import { Img } from 'next/img';
+import { Image } from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { ProductCard } from '@/components/ProductCard';
@@ -17,7 +17,7 @@ export default function HomePage() {
       {/* Hero Section */}
       <section className="relative h-[60vh] md:h-[80vh] w-full flex items-center justify-center text-center text-white">
         {heroImage && (
-          <Img
+          <Image
             src={heroImage.imageUrl}
             alt="Элегантный торт"
             fill
@@ -70,7 +70,7 @@ export default function HomePage() {
             </div>
             <div className="order-1 md:order-2">
               {aboutImage && (
-                <Img
+                <Image
                   src={aboutImage.imageUrl}
                   alt="Кондитер"
                   width={600}

@@ -1,4 +1,4 @@
-import { Img } from 'next/img';
+import { Image } from 'next/image';
 import { notFound } from 'next/navigation';
 import { products, categories } from '@/lib/data';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
@@ -37,11 +37,11 @@ export default function ProductPage({ params }: ProductPageProps) {
             <span className="font-medium text-foreground">{product.name}</span>
         </div>
       <div className="grid md:grid-cols-2 gap-8 lg:gap-16">
-        {/* Left Column: Img */}
+        {/* Left Column: Image */}
         <div className="space-y-6">
           {placeholderImage && (
             <div className="aspect-square relative w-full rounded-lg overflow-hidden shadow-lg">
-              <Img
+              <Image
                 src={placeholderImage.imageUrl}
                 alt={product.name}
                 fill
