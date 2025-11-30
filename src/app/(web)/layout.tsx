@@ -9,7 +9,7 @@ export default function WebLayout({
   return (
     <div className="flex min-h-screen flex-col">
       <Header />
-      <main className="flex-1 container">{children}</main>
+      <main className="flex-1">{children}</main>
       <Footer />
     </div>
   );

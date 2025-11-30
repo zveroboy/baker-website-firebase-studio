@@ -4,7 +4,7 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 export default function GalleryPage() {
   return (
-    <div className="py-12 lg:py-16">
+    <div className="container py-12 lg:py-16">
       <div className="text-center mb-12">
         <h1 className="text-4xl md:text-5xl font-headline">Галерея моих работ</h1>
         <p className="text-lg text-muted-foreground mt-2">

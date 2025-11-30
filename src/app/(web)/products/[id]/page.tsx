@@ -28,7 +28,7 @@ export default function ProductPage({ params }: ProductPageProps) {
   const placeholderImage = PlaceHolderImages.find(p => p.id === product.imageId);
 
   return (
-    <div className="py-12 lg:py-16">
+    <div className="container py-12 lg:py-16">
         <div className="flex items-center text-sm text-muted-foreground mb-6">
             <Link href="/" className="hover:text-primary">Главная</Link>
             <ChevronRight className="h-4 w-4 mx-1" />

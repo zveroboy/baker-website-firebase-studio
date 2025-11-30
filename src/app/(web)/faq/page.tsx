@@ -8,7 +8,7 @@ import { faqs } from '@/lib/data';
 
 export default function FaqPage() {
   return (
-    <div className="py-12 lg:py-16">
+    <div className="container py-12 lg:py-16">
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-headline">Часто задаваемые вопросы</h1>
