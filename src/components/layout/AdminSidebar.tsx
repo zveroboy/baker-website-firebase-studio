@@ -28,7 +28,7 @@ export function AdminSidebar() {
 
     return (
         <div className="hidden border-r bg-sidebar md:block">
-            <div className="flex h-full max-h-screen flex-col">
+            <div className="flex h-full flex-col">
                 <div className="flex h-14 shrink-0 items-center border-b px-4 lg:h-[60px] lg:px-6">
                     <Logo className="text-sidebar-foreground" />
                 </div>
