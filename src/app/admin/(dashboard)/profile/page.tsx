@@ -1,5 +1,4 @@
-import { getProfileAction } from "@/modules/users/actions";
-import { ProfileForm } from "@/modules/users/components/ProfileForm";
+import { getProfileAction, ProfileForm } from "@/modules/users";
 import { redirect } from "next/navigation";
 
 export default async function ProfilePage() {

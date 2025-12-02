@@ -1,5 +1,4 @@
-import { FaqAccordion } from "@/modules/faq/components/FaqAccordion";
-import { getFaqsAction } from "@/modules/faq/actions";
+import { FaqAccordion, getFaqsAction } from "@/modules/faq";
 
 export const revalidate = 3600; // Revalidate every hour or handle via On-Demand Revalidation
 

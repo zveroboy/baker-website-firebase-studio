@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { ProductCard } from '@/modules/products/components/ProductCard';
+import { ProductCard } from '@/modules/products';
 import { products } from '@/lib/data';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Clock, MapPin, Phone, Cake } from 'lucide-react';

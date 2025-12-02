@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from 'react';
-import { ProductCard } from '@/modules/products/components/ProductCard';
+import { ProductCard } from '@/modules/products';
 import { Button } from '@/components/ui/button';
 import { products, categories } from '@/lib/data';
 import type { Product } from '@/lib/types';

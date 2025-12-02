@@ -19,6 +19,7 @@ A personal bakery website with a public storefront and admin management system, 
 ### 1. Modular Vertical Slice Architecture
 Organize code by **Feature Module**, not by technical layer.
 - **Modules (`src/modules/*`)**: Contains all UI, Server Actions, and Schemas for a specific feature (e.g., `orders`, `products`).
+- **Barrel Files**: Each module MUST have an `index.ts` that exports its public API (components, actions, schemas). Use this barrel file for imports in other parts of the app.
 - **Core (`src/core/*`)**: Contains pure business logic, interfaces, and errors. **NO** UI code here.
 - **Infrastructure (`src/lib/*`)**: Database clients, S3 adapters, Auth config.
 
