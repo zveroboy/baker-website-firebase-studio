@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { products, categories } from '@/lib/data';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { OrderForm } from '@/components/OrderForm';
+import { OrderForm } from '@/modules/orders/components/OrderForm';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
 import { ChevronRight } from 'lucide-react';

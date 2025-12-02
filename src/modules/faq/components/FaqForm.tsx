@@ -101,3 +101,4 @@ export function FaqForm({ faq, onSuccess }: FaqFormProps) {
     </Form>
   );
 }
+

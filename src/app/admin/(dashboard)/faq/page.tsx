@@ -35,7 +35,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { FaqForm } from "@/components/admin/FaqForm";
+import { FaqForm } from "@/modules/faq/components/FaqForm";
 
 
 export default function FaqAdminPage() {

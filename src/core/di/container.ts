@@ -1,8 +1,8 @@
 import "reflect-metadata";
 import { Container } from "inversify";
 import { TYPES } from "./types";
-import { IProductService } from "./interfaces";
-import { MockProductService } from "./implementations/mock/ProductService";
+import { IProductService } from "../services/interfaces";
+import { MockProductService } from "../services/implementations/mock/ProductService";
 
 const container = new Container();
 
@@ -13,9 +13,10 @@ if (useMocks) {
     container.bind<IProductService>(TYPES.ProductService).to(MockProductService);
 } else {
     // Lazy load real implementation to avoid Prisma initialization in mock mode
-    const { RealProductService } = require("./implementations/real/ProductService");
+    const { RealProductService } = require("../services/implementations/real/ProductService");
     container.bind<IProductService>(TYPES.ProductService).to(RealProductService);
 }
 
 export { container };
+
 

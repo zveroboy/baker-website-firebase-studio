@@ -1,6 +1,6 @@
 import { injectable } from "inversify";
 import { IProductService } from "../../interfaces";
-import { prisma } from "@/lib/prisma";
+import { prisma } from "@/lib/db";
 import { Product } from "@prisma/client";
 
 @injectable()
@@ -38,6 +38,5 @@ export class RealProductService implements IProductService {
         });
     }
 }
-
 
 
