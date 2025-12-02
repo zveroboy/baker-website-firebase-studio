@@ -2,7 +2,6 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -15,23 +14,14 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import type { FAQ } from "@/lib/types";
 import { Loader2 } from "lucide-react";
 import { useState } from "react";
-
-const formSchema = z.object({
-  question: z.string().min(10, {
-    message: "Вопрос должен содержать не менее 10 символов.",
-  }),
-  answer: z.string().min(20, {
-    message: "Ответ должен содержать не менее 20 символов.",
-  }),
-});
-
-type FaqFormValues = z.infer<typeof formSchema>;
+import { createFaqSchema, type CreateFaqInput } from "../schema";
+import { createFaqAction, updateFaqAction } from "../actions";
+import type { Faq } from "@prisma/client";
 
 interface FaqFormProps {
-  faq?: FAQ | null;
+  faq?: Faq | null;
   onSuccess?: () => void;
 }
 
@@ -39,25 +29,49 @@ export function FaqForm({ faq, onSuccess }: FaqFormProps) {
   const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
 
-  const form = useForm<FaqFormValues>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<CreateFaqInput>({
+    resolver: zodResolver(createFaqSchema),
     defaultValues: {
       question: faq?.question || "",
       answer: faq?.answer || "",
+      order: faq?.order || 100,
     },
   });
 
-  function onSubmit(values: FaqFormValues) {
+  async function onSubmit(values: CreateFaqInput) {
     setIsLoading(true);
-    // Simulate API call
-    setTimeout(() => {
+    try {
+      let result;
+      if (faq) {
+        result = await updateFaqAction(faq.id, values);
+      } else {
+        result = await createFaqAction(values);
+      }
+
+      if (result.error) {
+         // Handle server-side validation errors if any
+         toast({
+            title: "Ошибка",
+            description: "Произошла ошибка при сохранении.",
+            variant: "destructive"
+         });
+         console.error(result.error);
+      } else {
+        toast({
+            title: faq ? "Вопрос обновлен" : "Вопрос добавлен",
+            description: `Вопрос "${values.question}" был успешно сохранен.`,
+        });
+        onSuccess?.();
+      }
+    } catch (error) {
+        toast({
+            title: "Ошибка",
+            description: "Произошла непредвиденная ошибка.",
+            variant: "destructive"
+        });
+    } finally {
       setIsLoading(false);
-      toast({
-        title: faq ? "Вопрос обновлен" : "Вопрос добавлен",
-        description: `Вопрос "${values.question}" был успешно сохранен.`,
-      });
-      onSuccess?.();
-    }, 1000);
+    }
   }
 
   return (
@@ -93,6 +107,24 @@ export function FaqForm({ faq, onSuccess }: FaqFormProps) {
             </FormItem>
           )}
         />
+         <FormField
+          control={form.control}
+          name="order"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Порядок сортировки</FormLabel>
+              <FormControl>
+                <Input 
+                    type="number" 
+                    placeholder="100" 
+                    {...field} 
+                    onChange={e => field.onChange(parseInt(e.target.value))}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
         <Button type="submit" disabled={isLoading}>
           {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
           Сохранить
@@ -101,4 +133,3 @@ export function FaqForm({ faq, onSuccess }: FaqFormProps) {
     </Form>
   );
 }
-

@@ -1,12 +1,11 @@
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from '@/components/ui/accordion';
-import { faqs } from '@/lib/data';
+import { FaqAccordion } from "@/modules/faq/components/FaqAccordion";
+import { getFaqsAction } from "@/modules/faq/actions";
 
-export default function FaqPage() {
+export const revalidate = 3600; // Revalidate every hour or handle via On-Demand Revalidation
+
+export default async function FaqPage() {
+  const faqs = await getFaqsAction();
+
   return (
     <div className="container py-12 lg:py-16">
       <div className="max-w-3xl mx-auto">
@@ -16,18 +15,7 @@ export default function FaqPage() {
             Здесь вы найдете ответы на популярные вопросы о заказах, доставке и моей продукции.
           </p>
         </div>
-        <Accordion type="single" collapsible className="w-full">
-          {faqs.map((faq) => (
-            <AccordionItem value={faq.id} key={faq.id}>
-              <AccordionTrigger className="text-left font-semibold text-lg hover:no-underline">
-                {faq.question}
-              </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground">
-                {faq.answer}
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
+        <FaqAccordion faqs={faqs} />
       </div>
     </div>
   );

@@ -1,7 +1,6 @@
 import { injectable } from "inversify";
 import { IProductService } from "../../interfaces";
-import { Product, PricingType } from "@prisma/client";
-import { Decimal } from "@prisma/client/runtime/library";
+import { Product, PricingType, Prisma } from "@prisma/client";
 
 @injectable()
 export class MockProductService implements IProductService {
@@ -11,8 +10,8 @@ export class MockProductService implements IProductService {
             name: "Mock Cake",
             description: "Delicious mock cake",
             pricingType: "PER_KILO",
-            price: new Decimal(50),
-            minWeight: new Decimal(1),
+            price: new Prisma.Decimal(50),
+            minWeight: new Prisma.Decimal(1),
             availableQuantities: [],
             picture: null,
             categoryId: "cat-1",
