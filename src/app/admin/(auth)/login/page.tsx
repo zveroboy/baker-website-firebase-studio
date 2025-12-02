@@ -15,31 +15,37 @@ import { Logo } from "@/components/Logo";
 import Link from "next/link";
 import { useToast } from "@/hooks/use-toast";
 import { Loader2 } from "lucide-react";
+import { authClient } from "@/lib/auth-client";
+import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
   const { toast } = useToast();
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    // This is a placeholder login.
-    setTimeout(() => {
-      setIsLoading(false);
-      if (email === "admin@example.com" && password === "password") {
-        toast({ title: "Вход выполнен (демо)" });
-        // In a real app, you'd redirect to the dashboard.
-        // e.g., router.push('/admin/orders');
-      } else {
+    
+    await authClient.signIn.email({
+      email,
+      password,
+    }, {
+      onSuccess: () => {
+        toast({ title: "Вход выполнен" });
+        router.push("/admin/orders");
+      },
+      onError: (ctx) => {
         toast({
           title: "Ошибка входа",
-          description: "Неверный email или пароль.",
+          description: ctx.error.message,
           variant: "destructive",
         });
+        setIsLoading(false);
       }
-    }, 1000);
+    });
   };
 
   return (

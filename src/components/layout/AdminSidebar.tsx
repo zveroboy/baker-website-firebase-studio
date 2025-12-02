@@ -15,6 +15,9 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { useToast } from '@/hooks/use-toast';
   
+import { authClient } from "@/lib/auth-client";
+import { useRouter } from "next/navigation";
+  
 export const navItems = [
     { href: '/admin/orders', label: 'Заказы', icon: ShoppingCart },
     { href: '/admin/products', label: 'Продукты', icon: Package },
@@ -26,11 +29,16 @@ export const navItems = [
 export function AdminSidebar() {
     const pathname = usePathname();
     const { toast } = useToast();
+    const router = useRouter();
 
-    const handleLogout = () => {
-        toast({ title: "Вы вышли из системы (демо)." });
-        // In a real app, this would sign the user out.
-        // e.g. router.push('/admin/login');
+    const handleLogout = async () => {
+        await authClient.signOut({
+            fetchOptions: {
+                onSuccess: () => {
+                    router.push("/admin/login");
+                },
+            },
+        });
     };
 
     return (
