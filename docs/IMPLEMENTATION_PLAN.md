@@ -4,6 +4,30 @@ This plan outlines the step-by-step implementation of the Baker Personal Website
 
 ---
 
+# Feature 0: User & Auth Management (Core)
+**Goal**: Secure admin authentication and user profile management.
+**Complexity**: Low (Leverages Better Auth)
+
+## Phase 1: Core Domain
+### Task 1: User Service
+- [x] **Step 1: Interface**
+  - Create `IUserService` in `src/core/services/interfaces.ts` (getProfile, updateProfile).
+- [x] **Step 2: Implementations**
+  - [x] Create `MockUserService` (In-memory user).
+  - [x] Create `UserService` (Real) wrapping Prisma/Better Auth.
+- [x] **Step 3: DI Registration**
+  - Bind `IUserService` in `src/core/di/container.ts`.
+
+## Phase 2: Admin Module
+### Task 1: Admin Profile
+- [x] **Step 1: Server Actions**
+  - `updateProfileAction` in `src/modules/users/actions.ts`.
+- [x] **Step 2: UI Components**
+  - `ProfileForm` using Zod schema.
+  - Update Login page to use standard UI components if needed.
+
+---
+
 # Feature 1: FAQ Management (Simplest)
 **Goal**: Admin can manage FAQs (CRUD) and reorder them. Public users can view them.
 **Complexity**: Low (Pure CRUD + Sort Order)
@@ -49,18 +73,18 @@ This plan outlines the step-by-step implementation of the Baker Personal Website
 
 ## Phase 1: Core Domain
 ### Task 1: Service Implementation
-- [ ] **Step 1: Interface**
+- [x] **Step 1: Interface**
   - Update `ICategoryService` to include `create`, `update`, `delete`.
-- [ ] **Step 2: Implementation**
-  - [ ] Create `MockCategoryService` (In-memory tree).
-  - [ ] Create `CategoryService` (Prisma) with logic to handle parent/child relationships.
+- [x] **Step 2: Implementation**
+  - [x] Create `MockCategoryService` (In-memory tree).
+  - [x] Create `CategoryService` (Prisma) with logic to handle parent/child relationships.
 
 ## Phase 2: Admin Module
 ### Task 1: Admin Management
-- [ ] **Step 1: Components**
+- [x] **Step 1: Components**
   - Create `CategoryForm` (with Parent Selector).
   - Create `CategoryTree` (visualize hierarchy).
-- [ ] **Step 2: Actions & Pages**
+- [x] **Step 2: Actions & Pages**
   - Implement server actions and Admin Page (`src/app/admin/categories/page.tsx`).
 
 ---

@@ -8,7 +8,8 @@ import {
   LogOut,
   GalleryHorizontal,
   MessageSquareQuote,
-  Tag
+  Tag,
+  User
 } from 'lucide-react';
 import { Logo } from '@/components/Logo';
 import { Button } from '@/components/ui/button';
@@ -24,6 +25,7 @@ export const navItems = [
     { href: '/admin/categories', label: 'Категории', icon: Tag },
     { href: '/admin/gallery', label: 'Галерея', icon: GalleryHorizontal },
     { href: '/admin/faq', label: 'FAQ', icon: MessageSquareQuote },
+    { href: '/admin/profile', label: 'Профиль', icon: User },
 ]
 
 export function AdminSidebar() {

@@ -1,19 +1,23 @@
-import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { AdminSidebar } from '@/components/layout/AdminSidebar';
 import { AdminHeader } from '@/components/layout/AdminHeader';
+import { container } from "@/core/di/container";
+import { TYPES } from "@/core/di/types";
+import { IAuthService } from "@/core/services/interfaces";
 
 export default async function DashboardLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
+  // Resolve AuthService from DI container to support mocking
+  const authService = container.get<IAuthService>(TYPES.AuthService);
+  const session = await authService.getCurrentSession();
 
-  if (!session || (session.user as any).role !== "admin") {
+  // Check if user is admin
+  // Note: In mock mode, this will always return true if MockAuthService returns an admin
+  if (!session || session.user.role !== "admin") {
     redirect("/admin/login");
   }
 
